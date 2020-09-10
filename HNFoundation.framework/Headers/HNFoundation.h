@@ -6,7 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class HNFListResponseDTO<T>, HNFNewsDTO;
+@class HNFNewsDTO;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -136,16 +136,10 @@ __attribute__((swift_name("KotlinBoolean")))
 + (instancetype)numberWithBool:(BOOL)value;
 @end;
 
-__attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("ListResponseDTO")))
 @interface HNFListResponseDTO<T> : HNFBase
-- (instancetype)initWithItems:(NSArray<id> *)items __attribute__((swift_name("init(items:)"))) __attribute__((objc_designated_initializer));
-- (NSArray<id> *)component1 __attribute__((swift_name("component1()")));
-- (HNFListResponseDTO<T> *)doCopyItems:(NSArray<id> *)items __attribute__((swift_name("doCopy(items:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSArray<id> *items __attribute__((swift_name("items")));
+- (instancetype)initWithItems:(NSMutableArray<id> *)items __attribute__((swift_name("init(items:)"))) __attribute__((objc_designated_initializer));
+@property (readonly) NSMutableArray<id> *items __attribute__((swift_name("items")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
