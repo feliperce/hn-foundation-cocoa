@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   #  can feel like a chore to fill in it's definitely to your advantage. The
   #  summary should be tweet-length, and the description more in depth.
   #
-s.name          = "HN-DTO"
+s.name          = "HN_DTO"
 #s.version      = "INITIAL_VERSION OR TAG"
 s.version       = "1.0.0-SNAPSHOT"
 s.summary       = "HN-DTO KMP library"
