@@ -1,0 +1,6 @@
+framework module HN_DTO {
+    umbrella header "HN_DTO.h"
+
+    export *
+    module * { export * }
+}
