@@ -175,13 +175,13 @@ __attribute__((swift_name("NewsDTO")))
 __attribute__((swift_name("NewsDTOOpen")))
 @interface HNFNewsDTOOpen : HNFBase
 - (instancetype)initWithAuthor:(NSString *)author id:(int64_t)id score:(int32_t)score timestamp:(int64_t)timestamp title:(NSString *)title type:(NSString *)type url:(NSString *)url __attribute__((swift_name("init(author:id:score:timestamp:title:type:url:)"))) __attribute__((objc_designated_initializer));
-@property (readonly) NSString *author __attribute__((swift_name("author")));
-@property (readonly) int64_t id __attribute__((swift_name("id")));
-@property (readonly) int32_t score __attribute__((swift_name("score")));
-@property (readonly) int64_t timestamp __attribute__((swift_name("timestamp")));
-@property (readonly) NSString *title __attribute__((swift_name("title")));
-@property (readonly) NSString *type __attribute__((swift_name("type")));
-@property (readonly) NSString *url __attribute__((swift_name("url")));
+@property NSString *author __attribute__((swift_name("author")));
+@property int64_t id __attribute__((swift_name("id")));
+@property int32_t score __attribute__((swift_name("score")));
+@property int64_t timestamp __attribute__((swift_name("timestamp")));
+@property NSString *title __attribute__((swift_name("title")));
+@property NSString *type __attribute__((swift_name("type")));
+@property NSString *url __attribute__((swift_name("url")));
 @end;
 
 #pragma clang diagnostic pop
