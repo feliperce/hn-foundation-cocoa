@@ -174,6 +174,8 @@ __attribute__((swift_name("NewsDTO")))
 
 __attribute__((swift_name("NewsDTOOpen")))
 @interface HNFNewsDTOOpen : HNFBase
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (instancetype)initWithAuthor:(NSString *)author id:(int64_t)id score:(int32_t)score timestamp:(int64_t)timestamp title:(NSString *)title type:(NSString *)type url:(NSString *)url __attribute__((swift_name("init(author:id:score:timestamp:title:type:url:)"))) __attribute__((objc_designated_initializer));
 @property NSString *author __attribute__((swift_name("author")));
 @property int64_t id __attribute__((swift_name("id")));
