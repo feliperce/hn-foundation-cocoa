@@ -138,8 +138,11 @@ __attribute__((swift_name("KotlinBoolean")))
 
 __attribute__((swift_name("ListResponseDTO")))
 @interface HNFListResponseDTO<T> : HNFBase
-- (instancetype)initWithItems:(NSMutableArray<id> *)items __attribute__((swift_name("init(items:)"))) __attribute__((objc_designated_initializer));
-@property NSMutableArray<id> *items __attribute__((swift_name("items")));
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithItems:(NSArray<id> *)items __attribute__((swift_name("init(items:)"))) __attribute__((objc_designated_initializer));
+- (void)froze __attribute__((swift_name("froze()")));
+@property NSArray<id> *items __attribute__((swift_name("items")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
