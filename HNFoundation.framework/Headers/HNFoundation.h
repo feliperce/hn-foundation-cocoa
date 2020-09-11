@@ -6,7 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class HNFNewsDTO;
+@class HNFBaseDTO;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -136,45 +136,26 @@ __attribute__((swift_name("KotlinBoolean")))
 + (instancetype)numberWithBool:(BOOL)value;
 @end;
 
+__attribute__((swift_name("BaseDTO")))
+@interface HNFBaseDTO : HNFBase
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (void)makeFrozen __attribute__((swift_name("makeFrozen()")));
+@end;
+
 __attribute__((swift_name("ListResponseDTO")))
-@interface HNFListResponseDTO<T> : HNFBase
+@interface HNFListResponseDTO<T> : HNFBaseDTO
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (instancetype)initWithItems:(NSArray<id> *)items __attribute__((swift_name("init(items:)"))) __attribute__((objc_designated_initializer));
-- (void)froze __attribute__((swift_name("froze()")));
 @property NSArray<id> *items __attribute__((swift_name("items")));
 @end;
 
-__attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("NewsDTO")))
-@interface HNFNewsDTO : HNFBase
-- (instancetype)initWithAuthor:(NSString *)author id:(int64_t)id score:(int32_t)score timestamp:(int64_t)timestamp title:(NSString *)title type:(NSString *)type url:(NSString *)url __attribute__((swift_name("init(author:id:score:timestamp:title:type:url:)"))) __attribute__((objc_designated_initializer));
-- (NSString *)component1 __attribute__((swift_name("component1()")));
-- (int64_t)component2 __attribute__((swift_name("component2()")));
-- (int32_t)component3 __attribute__((swift_name("component3()")));
-- (int64_t)component4 __attribute__((swift_name("component4()")));
-- (NSString *)component5 __attribute__((swift_name("component5()")));
-- (NSString *)component6 __attribute__((swift_name("component6()")));
-- (NSString *)component7 __attribute__((swift_name("component7()")));
-- (HNFNewsDTO *)doCopyAuthor:(NSString *)author id:(int64_t)id score:(int32_t)score timestamp:(int64_t)timestamp title:(NSString *)title type:(NSString *)type url:(NSString *)url __attribute__((swift_name("doCopy(author:id:score:timestamp:title:type:url:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSString *author __attribute__((swift_name("author")));
-@property (readonly) int64_t id __attribute__((swift_name("id")));
-@property (readonly) int32_t score __attribute__((swift_name("score")));
-@property (readonly) int64_t timestamp __attribute__((swift_name("timestamp")));
-@property (readonly) NSString *title __attribute__((swift_name("title")));
-@property (readonly) NSString *type __attribute__((swift_name("type")));
-@property (readonly) NSString *url __attribute__((swift_name("url")));
-@end;
-
-__attribute__((swift_name("NewsDTOOpen")))
-@interface HNFNewsDTOOpen : HNFBase
+@interface HNFNewsDTO : HNFBaseDTO
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (instancetype)initWithAuthor:(NSString *)author id:(int64_t)id score:(int32_t)score timestamp:(int64_t)timestamp title:(NSString *)title type:(NSString *)type url:(NSString *)url __attribute__((swift_name("init(author:id:score:timestamp:title:type:url:)"))) __attribute__((objc_designated_initializer));
-- (void)froze __attribute__((swift_name("froze()")));
 @property NSString *author __attribute__((swift_name("author")));
 @property int64_t id __attribute__((swift_name("id")));
 @property int32_t score __attribute__((swift_name("score")));
