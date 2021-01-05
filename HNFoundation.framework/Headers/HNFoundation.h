@@ -6,9 +6,9 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class HNFBaseDTO, HNFNewsDTO, HNFKotlinx_serialization_coreSerializersModule, HNFKotlinx_serialization_coreSerialKind, HNFKotlinNothing;
+@class HNFBaseDTO, HNFKotlinx_serialization_jsonJson, HNFNewsDTO, HNFKotlinThrowable, HNFKotlinArray<T>, HNFKotlinx_serialization_coreSerializersModule, HNFKotlinx_serialization_jsonJsonElement, HNFKotlinx_serialization_coreSerialKind, HNFKotlinNothing;
 
-@protocol HNFKotlinx_serialization_coreKSerializer, HNFKotlinx_serialization_coreEncoder, HNFKotlinx_serialization_coreSerialDescriptor, HNFKotlinx_serialization_coreSerializationStrategy, HNFKotlinx_serialization_coreDecoder, HNFKotlinx_serialization_coreDeserializationStrategy, HNFKotlinx_serialization_coreCompositeEncoder, HNFKotlinAnnotation, HNFKotlinx_serialization_coreCompositeDecoder, HNFKotlinx_serialization_coreSerializersModuleCollector, HNFKotlinKClass, HNFKotlinKDeclarationContainer, HNFKotlinKAnnotatedElement, HNFKotlinKClassifier;
+@protocol HNFKotlinx_serialization_coreKSerializer, HNFKotlinx_serialization_coreDeserializationStrategy, HNFKotlinx_serialization_coreSerializationStrategy, HNFKotlinx_serialization_coreSerialFormat, HNFKotlinx_serialization_coreStringFormat, HNFKotlinx_serialization_coreEncoder, HNFKotlinx_serialization_coreSerialDescriptor, HNFKotlinx_serialization_coreDecoder, HNFKotlinIterator, HNFKotlinx_serialization_coreSerializersModuleCollector, HNFKotlinKClass, HNFKotlinx_serialization_coreCompositeEncoder, HNFKotlinAnnotation, HNFKotlinx_serialization_coreCompositeDecoder, HNFKotlinKDeclarationContainer, HNFKotlinKAnnotatedElement, HNFKotlinKClassifier;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -142,16 +142,14 @@ __attribute__((swift_name("BaseDTO")))
 @interface HNFBaseDTO : HNFBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (void)makeFrozen __attribute__((swift_name("makeFrozen()")));
-@end;
 
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("BaseDTO.Companion")))
-@interface HNFBaseDTOCompanion : HNFBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-- (id<HNFKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+/**
+ @note This method converts instances of Exception to errors.
+ Other uncaught Kotlin exceptions are fatal.
+*/
+- (HNFBaseDTO * _Nullable)deserializeJsonString:(NSString *)jsonString error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("deserialize(jsonString:)")));
+- (void)makeFrozen __attribute__((swift_name("makeFrozen()")));
+@property (readonly) HNFKotlinx_serialization_jsonJson *json __attribute__((swift_name("json")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
@@ -168,6 +166,12 @@ __attribute__((swift_name("NewsDTO")))
 - (NSString *)component6 __attribute__((swift_name("component6()")));
 - (NSString *)component7 __attribute__((swift_name("component7()")));
 - (HNFNewsDTO *)doCopyAuthor:(NSString *)author id:(int64_t)id score:(int32_t)score timestamp:(int64_t)timestamp title:(NSString *)title type:(NSString *)type url:(NSString *)url __attribute__((swift_name("doCopy(author:id:score:timestamp:title:type:url:)")));
+
+/**
+ @note This method converts instances of Exception to errors.
+ Other uncaught Kotlin exceptions are fatal.
+*/
+- (HNFNewsDTO * _Nullable)deserializeJsonString:(NSString *)jsonString error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("deserialize(jsonString:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
@@ -189,6 +193,52 @@ __attribute__((swift_name("NewsDTO.Companion")))
 - (id<HNFKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end;
 
+__attribute__((swift_name("KotlinThrowable")))
+@interface HNFKotlinThrowable : HNFBase
+- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithCause:(HNFKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(HNFKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
+- (HNFKotlinArray<NSString *> *)getStackTrace __attribute__((swift_name("getStackTrace()")));
+- (void)printStackTrace __attribute__((swift_name("printStackTrace()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) HNFKotlinThrowable * _Nullable cause __attribute__((swift_name("cause")));
+@property (readonly) NSString * _Nullable message __attribute__((swift_name("message")));
+@end;
+
+__attribute__((swift_name("KotlinException")))
+@interface HNFKotlinException : HNFKotlinThrowable
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(HNFKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithCause:(HNFKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
+@end;
+
+__attribute__((swift_name("Kotlinx_serialization_coreSerialFormat")))
+@protocol HNFKotlinx_serialization_coreSerialFormat
+@required
+@property (readonly) HNFKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
+@end;
+
+__attribute__((swift_name("Kotlinx_serialization_coreStringFormat")))
+@protocol HNFKotlinx_serialization_coreStringFormat <HNFKotlinx_serialization_coreSerialFormat>
+@required
+- (id _Nullable)decodeFromStringDeserializer:(id<HNFKotlinx_serialization_coreDeserializationStrategy>)deserializer string:(NSString *)string __attribute__((swift_name("decodeFromString(deserializer:string:)")));
+- (NSString *)encodeToStringSerializer:(id<HNFKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeToString(serializer:value:)")));
+@end;
+
+__attribute__((swift_name("Kotlinx_serialization_jsonJson")))
+@interface HNFKotlinx_serialization_jsonJson : HNFBase <HNFKotlinx_serialization_coreStringFormat>
+- (id _Nullable)decodeFromJsonElementDeserializer:(id<HNFKotlinx_serialization_coreDeserializationStrategy>)deserializer element:(HNFKotlinx_serialization_jsonJsonElement *)element __attribute__((swift_name("decodeFromJsonElement(deserializer:element:)")));
+- (id _Nullable)decodeFromStringDeserializer:(id<HNFKotlinx_serialization_coreDeserializationStrategy>)deserializer string:(NSString *)string __attribute__((swift_name("decodeFromString(deserializer:string:)")));
+- (HNFKotlinx_serialization_jsonJsonElement *)encodeToJsonElementSerializer:(id<HNFKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeToJsonElement(serializer:value:)")));
+- (NSString *)encodeToStringSerializer:(id<HNFKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeToString(serializer:value:)")));
+- (HNFKotlinx_serialization_jsonJsonElement *)parseToJsonElementString:(NSString *)string __attribute__((swift_name("parseToJsonElement(string:)")));
+@property (readonly) HNFKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
+@end;
+
 __attribute__((swift_name("Kotlinx_serialization_coreSerializationStrategy")))
 @protocol HNFKotlinx_serialization_coreSerializationStrategy
 @required
@@ -206,6 +256,30 @@ __attribute__((swift_name("Kotlinx_serialization_coreDeserializationStrategy")))
 __attribute__((swift_name("Kotlinx_serialization_coreKSerializer")))
 @protocol HNFKotlinx_serialization_coreKSerializer <HNFKotlinx_serialization_coreSerializationStrategy, HNFKotlinx_serialization_coreDeserializationStrategy>
 @required
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("KotlinArray")))
+@interface HNFKotlinArray<T> : HNFBase
++ (instancetype)arrayWithSize:(int32_t)size init:(T _Nullable (^)(HNFInt *))init __attribute__((swift_name("init(size:init:)")));
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
+- (T _Nullable)getIndex:(int32_t)index __attribute__((swift_name("get(index:)")));
+- (id<HNFKotlinIterator>)iterator __attribute__((swift_name("iterator()")));
+- (void)setIndex:(int32_t)index value:(T _Nullable)value __attribute__((swift_name("set(index:value:)")));
+@property (readonly) int32_t size __attribute__((swift_name("size")));
+@end;
+
+__attribute__((swift_name("Kotlinx_serialization_coreSerializersModule")))
+@interface HNFKotlinx_serialization_coreSerializersModule : HNFBase
+- (void)dumpToCollector:(id<HNFKotlinx_serialization_coreSerializersModuleCollector>)collector __attribute__((swift_name("dumpTo(collector:)")));
+- (id<HNFKotlinx_serialization_coreKSerializer> _Nullable)getContextualKclass:(id<HNFKotlinKClass>)kclass __attribute__((swift_name("getContextual(kclass:)")));
+- (id<HNFKotlinx_serialization_coreSerializationStrategy> _Nullable)getPolymorphicBaseClass:(id<HNFKotlinKClass>)baseClass value:(id)value __attribute__((swift_name("getPolymorphic(baseClass:value:)")));
+- (id<HNFKotlinx_serialization_coreDeserializationStrategy> _Nullable)getPolymorphicBaseClass:(id<HNFKotlinKClass>)baseClass serializedClassName:(NSString * _Nullable)serializedClassName __attribute__((swift_name("getPolymorphic(baseClass:serializedClassName:)")));
+@end;
+
+__attribute__((swift_name("Kotlinx_serialization_jsonJsonElement")))
+@interface HNFKotlinx_serialization_jsonJsonElement : HNFBase
 @end;
 
 __attribute__((swift_name("Kotlinx_serialization_coreEncoder")))
@@ -266,6 +340,44 @@ __attribute__((swift_name("Kotlinx_serialization_coreDecoder")))
 @property (readonly) HNFKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
 @end;
 
+__attribute__((swift_name("KotlinIterator")))
+@protocol HNFKotlinIterator
+@required
+- (BOOL)hasNext __attribute__((swift_name("hasNext()")));
+- (id _Nullable)next __attribute__((swift_name("next()")));
+@end;
+
+__attribute__((swift_name("Kotlinx_serialization_coreSerializersModuleCollector")))
+@protocol HNFKotlinx_serialization_coreSerializersModuleCollector
+@required
+- (void)contextualKClass:(id<HNFKotlinKClass>)kClass serializer:(id<HNFKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("contextual(kClass:serializer:)")));
+- (void)polymorphicBaseClass:(id<HNFKotlinKClass>)baseClass actualClass:(id<HNFKotlinKClass>)actualClass actualSerializer:(id<HNFKotlinx_serialization_coreKSerializer>)actualSerializer __attribute__((swift_name("polymorphic(baseClass:actualClass:actualSerializer:)")));
+- (void)polymorphicDefaultBaseClass:(id<HNFKotlinKClass>)baseClass defaultSerializerProvider:(id<HNFKotlinx_serialization_coreDeserializationStrategy> _Nullable (^)(NSString * _Nullable))defaultSerializerProvider __attribute__((swift_name("polymorphicDefault(baseClass:defaultSerializerProvider:)")));
+@end;
+
+__attribute__((swift_name("KotlinKDeclarationContainer")))
+@protocol HNFKotlinKDeclarationContainer
+@required
+@end;
+
+__attribute__((swift_name("KotlinKAnnotatedElement")))
+@protocol HNFKotlinKAnnotatedElement
+@required
+@end;
+
+__attribute__((swift_name("KotlinKClassifier")))
+@protocol HNFKotlinKClassifier
+@required
+@end;
+
+__attribute__((swift_name("KotlinKClass")))
+@protocol HNFKotlinKClass <HNFKotlinKDeclarationContainer, HNFKotlinKAnnotatedElement, HNFKotlinKClassifier>
+@required
+- (BOOL)isInstanceValue:(id _Nullable)value __attribute__((swift_name("isInstance(value:)")));
+@property (readonly) NSString * _Nullable qualifiedName __attribute__((swift_name("qualifiedName")));
+@property (readonly) NSString * _Nullable simpleName __attribute__((swift_name("simpleName")));
+@end;
+
 __attribute__((swift_name("Kotlinx_serialization_coreCompositeEncoder")))
 @protocol HNFKotlinx_serialization_coreCompositeEncoder
 @required
@@ -283,14 +395,6 @@ __attribute__((swift_name("Kotlinx_serialization_coreCompositeEncoder")))
 - (void)endStructureDescriptor:(id<HNFKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("endStructure(descriptor:)")));
 - (BOOL)shouldEncodeElementDefaultDescriptor:(id<HNFKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("shouldEncodeElementDefault(descriptor:index:)")));
 @property (readonly) HNFKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
-@end;
-
-__attribute__((swift_name("Kotlinx_serialization_coreSerializersModule")))
-@interface HNFKotlinx_serialization_coreSerializersModule : HNFBase
-- (void)dumpToCollector:(id<HNFKotlinx_serialization_coreSerializersModuleCollector>)collector __attribute__((swift_name("dumpTo(collector:)")));
-- (id<HNFKotlinx_serialization_coreKSerializer> _Nullable)getContextualKclass:(id<HNFKotlinKClass>)kclass __attribute__((swift_name("getContextual(kclass:)")));
-- (id<HNFKotlinx_serialization_coreSerializationStrategy> _Nullable)getPolymorphicBaseClass:(id<HNFKotlinKClass>)baseClass value:(id)value __attribute__((swift_name("getPolymorphic(baseClass:value:)")));
-- (id<HNFKotlinx_serialization_coreDeserializationStrategy> _Nullable)getPolymorphicBaseClass:(id<HNFKotlinKClass>)baseClass serializedClassName:(NSString * _Nullable)serializedClassName __attribute__((swift_name("getPolymorphic(baseClass:serializedClassName:)")));
 @end;
 
 __attribute__((swift_name("KotlinAnnotation")))
@@ -328,37 +432,6 @@ __attribute__((swift_name("Kotlinx_serialization_coreCompositeDecoder")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KotlinNothing")))
 @interface HNFKotlinNothing : HNFBase
-@end;
-
-__attribute__((swift_name("Kotlinx_serialization_coreSerializersModuleCollector")))
-@protocol HNFKotlinx_serialization_coreSerializersModuleCollector
-@required
-- (void)contextualKClass:(id<HNFKotlinKClass>)kClass serializer:(id<HNFKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("contextual(kClass:serializer:)")));
-- (void)polymorphicBaseClass:(id<HNFKotlinKClass>)baseClass actualClass:(id<HNFKotlinKClass>)actualClass actualSerializer:(id<HNFKotlinx_serialization_coreKSerializer>)actualSerializer __attribute__((swift_name("polymorphic(baseClass:actualClass:actualSerializer:)")));
-- (void)polymorphicDefaultBaseClass:(id<HNFKotlinKClass>)baseClass defaultSerializerProvider:(id<HNFKotlinx_serialization_coreDeserializationStrategy> _Nullable (^)(NSString * _Nullable))defaultSerializerProvider __attribute__((swift_name("polymorphicDefault(baseClass:defaultSerializerProvider:)")));
-@end;
-
-__attribute__((swift_name("KotlinKDeclarationContainer")))
-@protocol HNFKotlinKDeclarationContainer
-@required
-@end;
-
-__attribute__((swift_name("KotlinKAnnotatedElement")))
-@protocol HNFKotlinKAnnotatedElement
-@required
-@end;
-
-__attribute__((swift_name("KotlinKClassifier")))
-@protocol HNFKotlinKClassifier
-@required
-@end;
-
-__attribute__((swift_name("KotlinKClass")))
-@protocol HNFKotlinKClass <HNFKotlinKDeclarationContainer, HNFKotlinKAnnotatedElement, HNFKotlinKClassifier>
-@required
-- (BOOL)isInstanceValue:(id _Nullable)value __attribute__((swift_name("isInstance(value:)")));
-@property (readonly) NSString * _Nullable qualifiedName __attribute__((swift_name("qualifiedName")));
-@property (readonly) NSString * _Nullable simpleName __attribute__((swift_name("simpleName")));
 @end;
 
 #pragma clang diagnostic pop
