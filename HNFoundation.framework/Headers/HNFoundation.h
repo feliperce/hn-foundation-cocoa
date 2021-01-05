@@ -6,7 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class HNFBaseDTO, HNFKotlinx_serialization_jsonJson, HNFNewsDTO, HNFKotlinThrowable, HNFKotlinArray<T>, HNFKotlinx_serialization_coreSerializersModule, HNFKotlinx_serialization_jsonJsonElement, HNFKotlinx_serialization_coreSerialKind, HNFKotlinNothing;
+@class HNFBaseDTO, HNFKotlinx_serialization_jsonJson, HNFNewsDTO, HNFNewsListDTO, HNFKotlinThrowable, HNFKotlinArray<T>, HNFKotlinx_serialization_coreSerializersModule, HNFKotlinx_serialization_jsonJsonElement, HNFKotlinx_serialization_coreSerialKind, HNFKotlinNothing;
 
 @protocol HNFKotlinx_serialization_coreKSerializer, HNFKotlinx_serialization_coreDeserializationStrategy, HNFKotlinx_serialization_coreSerializationStrategy, HNFKotlinx_serialization_coreSerialFormat, HNFKotlinx_serialization_coreStringFormat, HNFKotlinx_serialization_coreEncoder, HNFKotlinx_serialization_coreSerialDescriptor, HNFKotlinx_serialization_coreDecoder, HNFKotlinIterator, HNFKotlinx_serialization_coreSerializersModuleCollector, HNFKotlinKClass, HNFKotlinx_serialization_coreCompositeEncoder, HNFKotlinAnnotation, HNFKotlinx_serialization_coreCompositeDecoder, HNFKotlinKDeclarationContainer, HNFKotlinKAnnotatedElement, HNFKotlinKClassifier;
 
@@ -187,6 +187,35 @@ __attribute__((swift_name("NewsDTO")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("NewsDTO.Companion")))
 @interface HNFNewsDTOCompanion : HNFBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+- (id<HNFKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("NewsListDTO")))
+@interface HNFNewsListDTO : HNFBaseDTO
+- (instancetype)initWithNews:(NSArray<HNFNewsDTO *> *)news __attribute__((swift_name("init(news:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
++ (instancetype)new __attribute__((unavailable));
+- (NSArray<HNFNewsDTO *> *)component1 __attribute__((swift_name("component1()")));
+- (HNFNewsListDTO *)doCopyNews:(NSArray<HNFNewsDTO *> *)news __attribute__((swift_name("doCopy(news:)")));
+
+/**
+ @note This method converts instances of Exception to errors.
+ Other uncaught Kotlin exceptions are fatal.
+*/
+- (HNFBaseDTO * _Nullable)deserializeJsonString:(NSString *)jsonString error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("deserialize(jsonString:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSArray<HNFNewsDTO *> *news __attribute__((swift_name("news")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("NewsListDTO.Companion")))
+@interface HNFNewsListDTOCompanion : HNFBase
 + (instancetype)alloc __attribute__((unavailable));
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
