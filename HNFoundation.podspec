@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   #
 s.name          = "HNFoundation"
 #s.version      = "INITIAL_VERSION OR TAG"
-s.version       = "1.0.0-SNAPSHOT"
+s.version       = "1.0.1"
 s.summary       = "HNFoundation KMP library"
 s.homepage      = "https://github.com/prof18/hn-foundation-cocoa"
 s.description   = "The framework of the HNFoundation library"
