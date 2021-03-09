@@ -165,34 +165,17 @@ __attribute__((swift_name("TesteA")))
 - (void)testeA __attribute__((swift_name("testeA()")));
 @end;
 
-__attribute__((swift_name("TesteB")))
-@interface HNFTesteB : HNFBase
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (void)testeB __attribute__((swift_name("testeB()")));
-@end;
-
-__attribute__((swift_name("TesteC")))
-@interface HNFTesteC : HNFBase
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (void)testeC __attribute__((swift_name("testeC()")));
-@end;
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("TesteD")))
-@interface HNFTesteD : HNFBase
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (void)testeD __attribute__((swift_name("testeD()")));
-@end;
-
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("OnboardingApi")))
 @interface HNFOnboardingApi : HNFBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (void)sendEnrollDefinition:(NSString *)definition onResult:(void (^)(HNFSendEnrollResponse *))onResult __attribute__((swift_name("sendEnroll(definition:onResult:)")));
+
+/**
+ @note This method converts instances of Exception to errors.
+ Other uncaught Kotlin exceptions are fatal.
+*/
+- (BOOL)sendEnrollDefinition:(NSString *)definition error:(NSError * _Nullable * _Nullable)error onResult:(void (^)(HNFSendEnrollResponse *))onResult __attribute__((swift_name("sendEnroll(definition:onResult:)")));
 
 /**
  @note This method converts instances of CancellationException to errors.
