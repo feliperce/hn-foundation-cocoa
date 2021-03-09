@@ -158,6 +158,14 @@ __attribute__((swift_name("Dados")))
 @end;
 
 __attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Teste")))
+@interface HNFTeste : HNFBase
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (void)teste __attribute__((swift_name("teste()")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("OnboardingApi")))
 @interface HNFOnboardingApi : HNFBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
