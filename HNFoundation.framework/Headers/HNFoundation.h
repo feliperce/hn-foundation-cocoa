@@ -158,11 +158,33 @@ __attribute__((swift_name("Dados")))
 @end;
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Teste")))
-@interface HNFTeste : HNFBase
+__attribute__((swift_name("TesteA")))
+@interface HNFTesteA : HNFBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (void)teste __attribute__((swift_name("teste()")));
+- (void)testeA __attribute__((swift_name("testeA()")));
+@end;
+
+__attribute__((swift_name("TesteB")))
+@interface HNFTesteB : HNFBase
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (void)testeB __attribute__((swift_name("testeB()")));
+@end;
+
+__attribute__((swift_name("TesteC")))
+@interface HNFTesteC : HNFBase
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (void)testeC __attribute__((swift_name("testeC()")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("TesteD")))
+@interface HNFTesteD : HNFBase
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (void)testeD __attribute__((swift_name("testeD()")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
